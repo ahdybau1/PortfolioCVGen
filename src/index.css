@@ -1,0 +1,149 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --toast-bg: #ffffff;
+  --toast-color: #374151;
+}
+
+.dark {
+  --toast-bg: #1f2937;
+  --toast-color: #f3f4f6;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 dark:bg-gray-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 dark:bg-gray-600 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400 dark:bg-gray-500;
+}
+
+/* Smooth transitions */
+* {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Glass morphism effect */
+.glass {
+  @apply bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg border border-gray-200/50 dark:border-gray-700/50;
+}
+
+/* Gradient text */
+.gradient-text {
+  @apply bg-gradient-to-r from-blue-600 via-purple-600 to-teal-600 bg-clip-text text-transparent;
+}
+
+/* Animation keyframes */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Focus styles */
+input:focus, textarea:focus, select:focus {
+  @apply outline-none ring-2 ring-blue-500 ring-opacity-50 border-blue-500;
+}
+
+/* Button hover effects */
+.btn-primary {
+  @apply bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200;
+}
+
+.btn-secondary {
+  @apply bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 font-semibold py-3 px-6 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200;
+}
+
+/* Card hover effects */
+.card-hover {
+  @apply transform hover:-translate-y-2 hover:shadow-xl transition-all duration-300;
+}
+
+/* Loading animation */
+.loading-dots {
+  display: inline-block;
+}
+
+.loading-dots::after {
+  content: '';
+  animation: loading-dots 1.5s infinite;
+}
+
+@keyframes loading-dots {
+  0%, 20% {
+    content: '';
+  }
+  40% {
+    content: '.';
+  }
+  60% {
+    content: '..';
+  }
+  80%, 100% {
+    content: '...';
+  }
+}
+
+/* Custom gradient backgrounds */
+.bg-gradient-mesh {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient-mesh 15s ease infinite;
+}
+
+@keyframes gradient-mesh {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Responsive text sizes */
+@media (max-width: 640px) {
+  .text-responsive-xl {
+    @apply text-2xl;
+  }
+  .text-responsive-2xl {
+    @apply text-3xl;
+  }
+  .text-responsive-3xl {
+    @apply text-4xl;
+  }
+}
+
+@media (min-width: 641px) {
+  .text-responsive-xl {
+    @apply text-3xl;
+  }
+  .text-responsive-2xl {
+    @apply text-4xl;
+  }
+  .text-responsive-3xl {
+    @apply text-5xl;
+  }
+}
